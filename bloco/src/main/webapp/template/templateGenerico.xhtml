@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<h:outputStylesheet library="css" name="style.css"/>
+<title><ui:insert name="title"></ui:insert></title>
+</h:head>
+<h:body>
+
+  <header>
+      <h1>BLOCO BLOG</h1>
+      <p:menubar
+			style="background-color: #86baf9 !important; position: relative; bottom:20px; border:none;">
+			<p:menuitem value="Home" style="margin-right: 15px;" outcome="/home.xhtml"/>
+			<p:menuitem value="Pesquisar" style="margin-right: 15px;" />
+			<p:menuitem value="Temas" style="margin-right: 15px;" />
+			<p:menuitem value="Loja" style="margin-right: 15px;" />
+			<p:submenu label="Conta" style="margin-right: 15px;">
+				<p:menuitem value="#{loginMB.conta eq null ? 'Login' : 'Conta'}" outcome=
+				"#{loginMB.conta eq null ? 'login.xhtml' : '/restricted/conta.xhtml'}"/>
+				<p:menuitem value="Amigos" />
+				<p:menuitem value="Notificações" />
+				<p:menuitem value="Personalizar" />
+			</p:submenu>
+		</p:menubar>
+  </header>
+  
+  <ui:insert name="generico"/>
+  
+  <footer>
+      <H2>RODAPÉ ============= RODAPÉ</H2>
+  </footer>
+
+</h:body>
+</html>

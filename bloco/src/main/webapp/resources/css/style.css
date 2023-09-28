@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+body {
+	font-size: 12px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin:20px;
+}
+
+h1 {
+	font-size: 24px;
+	font-weight: 450;
+}
+
+header {
+	background-color: #86baf9;
+	color: #80ff00;
+	text-align: center;
+	height: 30px;
+	margin-bottom: 100px;
+	
+}
+
+footer {
+	background-color: #86baf9;
+	color: #80ff00;
+	text-align: center;
+	height: 30px;
+}
+
+.bloco {
+	background-color: #86dff9;
+	width: 300px;
+	height: 300px;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.bloco h3 {
+	margin-top: 5px;
+}
+
+.bloco-corpo {
+	background-color: lightblue;
+	height: 280px;
+	width: 300px;
+	margin-bottom: 40x;
+}
