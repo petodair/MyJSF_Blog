@@ -35,6 +35,7 @@ public class PostMB implements Serializable {
 	
 	public void adicionar(int id) {
 		try {
+			
 			post.setId(id);
 			service.salvar(post);
 			FacesContext context = FacesContext.getCurrentInstance();
@@ -57,7 +58,8 @@ public class PostMB implements Serializable {
 	}
 	
 	public void pagPost(int id) {
-		post = service.selecionaPost(post);
+		System.out.println(id);
+		post = service.selecionaPost(id);
 		try {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("paginaPost.xhtml?param=#{p.id}");
 		} catch (IOException e) {

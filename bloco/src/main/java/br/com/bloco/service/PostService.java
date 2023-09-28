@@ -23,8 +23,8 @@ public class PostService implements Serializable{
 		dao.deletaPost(p);
 	}
 	
-	public Post selecionaPost(Post p) {
-		dao.selecionaPost(p);
+	public Post selecionaPost(int id) {
+	    Post p = dao.selecionaPost(id);
 		return p;
 	}
 	

@@ -81,12 +81,13 @@ public class DAOPost implements Serializable{
 		}
 	}
 
-	public void selecionaPost(Post post) {
+	public Post selecionaPost(int id) {
 		String read2 = "select * from tbposts where id  = ?";
+		Post post = new Post();
 		try {
 			Connection con = conectar();
 			PreparedStatement pst = con.prepareStatement(read2);
-			pst.setInt(1, post.getId());
+			pst.setInt(1, id);
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
 
@@ -101,6 +102,7 @@ public class DAOPost implements Serializable{
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+		return post;
 	}
 	
 	public void deletaPost(Post post) {
