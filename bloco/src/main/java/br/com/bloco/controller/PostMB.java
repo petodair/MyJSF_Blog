@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -16,7 +15,7 @@ import br.com.bloco.model.Post;
 import br.com.bloco.service.PostService;
 
 @Named
-@SessionScoped
+@ViewScoped
 public class PostMB implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -61,10 +60,10 @@ public class PostMB implements Serializable {
 	public void pagPost(int id) {
 		System.out.println(id);
 		post = service.selecionaPost(id);
-		System.out.println(post.getId());
 		try {
+
 			FacesContext.getCurrentInstance().getExternalContext().redirect("paginaPost.xhtml");
-			System.out.println(post.getId());
+
 		} catch (IOException e) {
 			System.out.println(e);
 		}
