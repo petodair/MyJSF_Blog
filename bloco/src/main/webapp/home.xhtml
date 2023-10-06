@@ -19,14 +19,14 @@
 
 		<h:form id="form">
 
-			<ui:repeat id="pag" var="p" value="#{postMB.posts}">
+			<p:dataList id="pag" var="p" value="#{postMB.posts}" paginator="true" rows="5">
 
 				<div class="bloco">
 
 					<h1>#{p.assunto}</h1>
 					<p>#{p.conteudo}</p>
 
-					<p:commandButton value="Delete"
+					<p:commandButton rendered="#{p.idConta eq loginMB.conta.id ? 'true' : 'false'}" value="Delete"
 						actionListener="#{postMB.remover(p)}" process="@this, form"
 						update="form" />
 						
@@ -34,8 +34,8 @@
 						action="#{bean.pagPost(p.id)}" process="@this, form"/>
 
 				</div>
-
-			</ui:repeat>
+				
+			</p:dataList>
 
 		</h:form>
 

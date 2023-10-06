@@ -45,7 +45,7 @@ public class DAOConta implements Serializable {
 			pst.setString(1, conta.getUser());
 			pst.setString(2, conta.getEmail());
 			pst.setString(3, conta.getSenha());
-			pst.setString(4, conta.getTipo());
+			pst.setString(4, "normal");
 
 			pst.executeUpdate();
 

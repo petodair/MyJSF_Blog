@@ -19,6 +19,10 @@ public class PostService implements Serializable{
 		dao.inserirPost(p);
 	}
 	
+	public void editar(Post p) {
+		dao.atualizaPost(p);
+	}
+	
 	public void remover(Post p) {
 		dao.deletaPost(p);
 	}
@@ -26,6 +30,10 @@ public class PostService implements Serializable{
 	public Post selecionaPost(int id) {
 	    Post p = dao.selecionaPost(id);
 		return p;
+	}
+	
+	public List<Post> postsDaConta(int id) {
+		return dao.listarPostsPorConta(id);
 	}
 	
 	public List<Post> todosOsPosts(){

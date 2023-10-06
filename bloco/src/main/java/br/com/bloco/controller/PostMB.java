@@ -28,9 +28,16 @@ public class PostMB implements Serializable {
 	
 	private List<Post> posts;
 	
+	private List<Post> postsConta;
+	
 	@PostConstruct
 	public void carregar() {
 		posts = service.todosOsPosts();
+	}
+	
+	public List<Post> postsDaConta(int id) {
+		postsConta = service.postsDaConta(id);
+		return postsConta;
 	}
 	
 	public void adicionar(int id) {
@@ -44,6 +51,15 @@ public class PostMB implements Serializable {
 			System.out.println(e);
 		}
 		
+	}
+	
+	public void editar(Post p) {
+		try {
+			service.editar(p);
+			FacesContext.getCurrentInstance().getExternalContext().redirect("../restricted/conta.xhtml");		
+		} catch (Exception e) {
+			
+		}
 	}
 	
 	public void remover(Post p) {
@@ -61,9 +77,7 @@ public class PostMB implements Serializable {
 		System.out.println(id);
 		post = service.selecionaPost(id);
 		try {
-
 			FacesContext.getCurrentInstance().getExternalContext().redirect("paginaPost.xhtml");
-
 		} catch (IOException e) {
 			System.out.println(e);
 		}
@@ -80,5 +94,10 @@ public class PostMB implements Serializable {
 	public List<Post> getPosts() {
 		return posts;
 	}
+
+	public List<Post> getPostsConta() {
+		return postsConta;
+	}
+	
 
 }

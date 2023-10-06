@@ -32,7 +32,6 @@ public class LoginMB implements Serializable {
 		conta.setSenha(senha);
 		
 		if(service.checaLogin(conta) == true) {
-			System.out.println(conta.getUser());
 			return "/home.xhtml";
 		}
 		System.out.println("usuario ou senha incorretos");
