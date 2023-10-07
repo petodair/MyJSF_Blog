@@ -65,3 +65,15 @@ footer {
 	width: 300px;
 	margin-bottom: 40x;
 }
+
+.comentario {
+	background-color: lightcyan;
+	border-radius: 5px;
+	border-color: lightgreen;
+	
+}
+
+#headerComentario {
+	background-color:  #86baf9;
+	border-radius: 4px;
+}

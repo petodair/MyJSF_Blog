@@ -33,7 +33,6 @@ public class ContaMB implements Serializable{
 	public void adicionar() {
 		try {
 			service.salvar(conta);
-			
 			conta = new Conta();
 			carregar();
 		} catch (Exception e) {
@@ -42,8 +41,7 @@ public class ContaMB implements Serializable{
 		
 	}
 	
-	public void remover() {
-		
+	public void remover() {		
 		try {
 			service.remover(conta);
 			carregar();
