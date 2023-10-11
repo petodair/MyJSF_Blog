@@ -13,9 +13,14 @@
 <h:body>
 
   <header>
-      <h1>BLOCO BLOG</h1>
+  <div class="logo">
+   <h:link outcome="/home.xhtml">
+      <h:graphicImage library="img" name="logo.png" width="150"/>
+      </h:link>
+      </div>
+      <div>
       <p:menubar
-			style="background-color: #86baf9 !important; position: relative; bottom:20px; border:none;">
+			style="background-color: #86baf9 !important; position: relative; bottom:4px; border:none;">
 			<p:menuitem value="Home" style="margin-right: 15px;" outcome="/home.xhtml"/>
 			<p:menuitem value="Pesquisar" style="margin-right: 15px;" />
 			<p:menuitem value="Temas" style="margin-right: 15px;" />
@@ -28,6 +33,7 @@
 				<p:menuitem value="Personalizar" />
 			</p:submenu>
 		</p:menubar>
+		</div>
   </header>
   
   <ui:insert name="generico"/>

@@ -10,7 +10,6 @@ import javax.inject.Named;
 
 import br.com.bloco.model.Comentario;
 import br.com.bloco.service.ComentarioService;
-import javax.annotation.PostConstruct;
 
 @Named
 @ViewScoped
@@ -37,11 +36,11 @@ public class ComentarioMB implements Serializable {
 	public void adicionar(int id) {
 		try {		
 			if(loginMB.getConta() == null) {
-				FacesContext.getCurrentInstance().getExternalContext().redirect("/login.xhtml");
+				FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
 			} else {
 			comentario.setAutor(loginMB.getConta().getUser());
 			comentario.setIdConta(loginMB.getConta().getId());
-			comentario.setId(id);
+			comentario.setIdPost(id);
 			service.salvar(comentario);
 			comentario = new Comentario();
 			carregarComentarios(id);

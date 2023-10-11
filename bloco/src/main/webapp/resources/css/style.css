@@ -15,8 +15,9 @@ header {
 	background-color: #86baf9;
 	color: #80ff00;
 	text-align: center;
-	height: 30px;
-	margin-bottom: 100px;
+	height: 15px;
+	margin-bottom: 150px;
+	padding-top: 10px;
 	
 }
 
@@ -25,6 +26,11 @@ footer {
 	color: #80ff00;
 	text-align: center;
 	height: 30px;
+}
+
+.logo {
+	width: 100%;
+	background-color: #86baf9;
 }
 
 .postsConta {
@@ -67,10 +73,13 @@ footer {
 }
 
 .comentario {
-	background-color: lightcyan;
-	border-radius: 5px;
-	border-color: lightgreen;
-	
+	border: 2px solid yellow;
+	border-radius: 7px;
+	color: blue;
+	background-color: lightgreen;
+	width: 400px;
+	height: 200px;
+	margin-bottom: 30px;
 }
 
 #headerComentario {

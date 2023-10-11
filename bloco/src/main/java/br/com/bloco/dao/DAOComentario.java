@@ -41,8 +41,8 @@ public class DAOComentario {
 			
 			pst.setString(1, comentario.getAutor());
 			pst.setString(2, comentario.getComentario());
-			pst.setInt(5, comentario.getIdPost());
-			pst.setInt(6, comentario.getIdConta());
+			pst.setInt(3, comentario.getIdPost());
+			pst.setInt(4, comentario.getIdConta());
 			
 			pst.executeUpdate();
 			
