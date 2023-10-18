@@ -7,8 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.mysql.cj.exceptions.RSAException;
-
 import br.com.bloco.model.Conta;
 
 public class DAOConta implements Serializable {
@@ -82,6 +80,60 @@ public class DAOConta implements Serializable {
 			return null;
 		}
 	}
+	
+	public Conta selecionaConta(int id) {
+		String read2 = "select idconta, usuario, email, senha, tipo FROM tbcontas where idconta = ?";
+		Conta conta = new Conta();
+		try {
+			Connection con = conectar();
+			PreparedStatement pst = con.prepareStatement(read2);
+			pst.setInt(1, id);
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+
+				conta.setId(rs.getInt(1));
+				conta.setUser(rs.getString(2));
+				conta.setEmail(rs.getString(3));
+				conta.setSenha(rs.getString(4));
+				conta.setTipo(rs.getString(5));
+			}
+
+			con.close();
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return conta;
+	}
+	
+	public ArrayList<Conta> pesquisarContas(String nome) {
+		ArrayList<Conta> contas = new ArrayList<>();
+		String read = "SELECT idconta, usuario, email, senha, tipo FROM tbcontas WHERE usuario = ?";
+
+		try {
+			Connection con = conectar();
+			PreparedStatement pst = con.prepareStatement(read);
+			pst.setString(1, nome);
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+
+				int id = rs.getInt(1);
+				String usuario = rs.getString(2);
+				String email = rs.getString(3);
+				String senha = rs.getString(4);
+				String tipo = rs.getString(5);
+
+				contas.add(new Conta(id, usuario, email, senha, tipo));
+			}
+			con.close();
+			return contas;
+		} catch (Exception e) {
+			System.out.println("Erro ao listar: " + e);
+			return null;
+		}
+	}
+
 
 	public void deletaConta(Conta conta) {
 

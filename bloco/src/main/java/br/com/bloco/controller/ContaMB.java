@@ -23,7 +23,11 @@ public class ContaMB implements Serializable{
 	@Inject
 	private ContaService service;
 	
+	private String pesquisa;
+	
 	private List<Conta> contas;
+	
+	private List<Conta> contasPesquisadas = null;
 	
 	@PostConstruct
 	public void carregar() {
@@ -49,6 +53,26 @@ public class ContaMB implements Serializable{
 			
 		}
 		
+	}
+	
+	public void pesquisar() {
+		try {
+			contasPesquisadas = service.pesquisarConta(pesquisa);
+		} catch (Exception e) {
+			
+		}
+	}
+
+	public String getPesquisa() {
+		return pesquisa;
+	}
+
+	public void setPesquisa(String pesquisa) {
+		this.pesquisa = pesquisa;
+	}
+
+	public List<Conta> getContasPesquisadas() {
+		return contasPesquisadas;
 	}
 
 	public Conta getConta() {

@@ -23,8 +23,16 @@ public class ContaService implements Serializable{
 		dao.deletaConta(c);
 	}
 	
+	public Conta selecionaConta(int id) {
+		return dao.selecionaConta(id);
+	}
+	
 	public List<Conta> todasAsContas(){
 		return dao.listarContas();
+	}
+	
+	public List<Conta> pesquisarConta(String nome){
+		return dao.pesquisarContas(nome);
 	}
 
 }

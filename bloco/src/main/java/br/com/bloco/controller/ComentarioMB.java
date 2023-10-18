@@ -25,6 +25,9 @@ public class ComentarioMB implements Serializable {
 	
 	@Inject
 	private LoginMB loginMB;
+	
+	@Inject
+	private CurtidaMB curtidaMB;
 
 	private List<Comentario> comentarios;
 	
@@ -48,6 +51,16 @@ public class ComentarioMB implements Serializable {
 		} catch (Exception e) {
 			System.out.println("erro ao adicionar: " + e);
 		}
+	}
+	
+	public void curtir(int idComent, int idPost) {
+		curtidaMB.curtir(idComent, idPost);
+		carregarComentarios(idPost);
+	}
+	
+	public void descurtir(int idComent, int idPost) {
+		curtidaMB.descurtir(idComent, idPost);
+		carregarComentarios(idPost);
 	}
 	
 	public void teste() {

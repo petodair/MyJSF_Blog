@@ -82,6 +82,18 @@ footer {
 	margin-bottom: 30px;
 }
 
+.pesquisaConta {
+	
+	border: 2px solid yellow;
+	border-radius: 7px;
+	color: blue;
+	background-color: lightgreen;
+	width: 400px;
+	height: 200px;
+	margin-bottom: 30px;
+	
+}
+
 #headerComentario {
 	background-color:  #86baf9;
 	border-radius: 4px;

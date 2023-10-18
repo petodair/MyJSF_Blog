@@ -34,8 +34,10 @@
 
 					<h1>#{c.autor}</h1>
 					<h1>#{c.comentario}</h1>
-					<h:link value="likes #{c.likes}"/>
-					<h:link value="deslikes #{c.deslikes}" style="margin-left:20px;"/>
+					<p:commandButton value="likes #{c.likes}" action="#{comentarioMB.curtir(c.id, bean.post.id)}" 
+					update="com" style="color: green;"/>
+					<p:commandButton value="deslikes #{c.deslikes}" action="#{comentarioMB.descurtir(c.id, bean.post.id)}" 
+					update="com" style="margin-left:20px; color: red;"/>
 
 				</div>
 

@@ -85,15 +85,21 @@ public class DAOComentario {
 	
 	public void deletaComentario(Comentario comentario) {
 		String delete = "DELETE FROM tbcomentarios WHERE id = ?";
+		String delete2 = "DELETE FROM registrolikes WHERE idcomentario = ?";
 		try {
 			
 			Connection con = conectar();
 
 			PreparedStatement pst = con.prepareStatement(delete);
+			PreparedStatement pst2 = con.prepareStatement(delete2);
 
 			pst.setInt(1, comentario.getId());
+			
+		    pst2.setInt(1, comentario.getId());
 
 			pst.executeUpdate();
+			
+			pst2.executeUpdate();
 
 			con.close();
 			

@@ -103,7 +103,7 @@ public class DAOPost implements Serializable{
 			con.close();
 			return posts;
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("erro ao listar" + e);
 			return null;
 		}
 	}
@@ -157,6 +157,8 @@ public class DAOPost implements Serializable{
 	public void deletaPost(Post post) {
 		
 		String deletePost = "DELETE FROM tbposts WHERE id = ?";
+		String delete2 = "DELETE FROM tbcomentarios WHERE idpost = ?";
+		String delete3 = "DELETE FROM registrolikes WHERE idpost = ?";
 	
 		try {
 
@@ -164,9 +166,21 @@ public class DAOPost implements Serializable{
 
 			PreparedStatement pst = con.prepareStatement(deletePost);
 			
-			pst.setInt(1, post.getId());			
+			PreparedStatement pst2 = con.prepareStatement(delete2);
+			
+			PreparedStatement pst3 = con.prepareStatement(delete3);
+			
+			pst.setInt(1, post.getId());	
+			
+			pst2.setInt(1, post.getId());
+			
+			pst3.setInt(1, post.getId());
 
 			pst.executeUpdate();
+			
+			pst2.executeUpdate();
+			
+			pst3.executeUpdate();
 
 			con.close();
 

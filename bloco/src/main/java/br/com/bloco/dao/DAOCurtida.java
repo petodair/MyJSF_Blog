@@ -94,7 +94,7 @@ public class DAOCurtida implements Serializable {
 			PreparedStatement pst2 = null;
 
 			if (resposta == true && like == true) {
-				read = "UPDATE tbcomentarios SET likes = likes - 1 WHERE idcomentario = ? ";
+				read = "UPDATE tbcomentarios SET likes = likes - 1 WHERE id = ? ";
 				read2 = "DELETE FROM registrolikes WHERE idcomentario = ? AND idconta = ?";
 				pst = con.prepareStatement(read);
 				pst2 = con.prepareStatement(read2);
@@ -104,7 +104,7 @@ public class DAOCurtida implements Serializable {
 				pst2.setInt(2, idConta);
 
 			} else if (resposta == true && like == false) {
-				read = "UPDATE tbcomentarios SET deslikes = deslikes - 1, likes = likes + 1 WHERE idcomentario = ?";
+				read = "UPDATE tbcomentarios SET deslikes = deslikes - 1, likes = likes + 1 WHERE id = ?";
 				read2 = "UPDATE registrolikes SET curtido = true WHERE idcomentario = ? and idconta = ?";
 				pst = con.prepareStatement(read);
 				pst2 = con.prepareStatement(read2);
@@ -114,7 +114,7 @@ public class DAOCurtida implements Serializable {
 				pst2.setInt(2, idConta);
 
 			} else if (resposta == false) {
-				read = "UPDATE tbcomentarios SET likes = likes + 1 WHERE idcomentario = ?";
+				read = "UPDATE tbcomentarios SET likes = likes + 1 WHERE id = ?";
 				read2 = "INSERT INTO registrolikes(idcomentario, idconta, curtido, idpost) VALUES (?,?,?,?)";
 				pst = con.prepareStatement(read);
 				pst2 = con.prepareStatement(read2);
@@ -149,7 +149,7 @@ public class DAOCurtida implements Serializable {
 			PreparedStatement pst2 = null;
 
 			if (resposta == true && like == false) {
-				read = "UPDATE tbcomentarios SET deslikes = deslikes - 1 WHERE idcomentario = ?";
+				read = "UPDATE tbcomentarios SET deslikes = deslikes - 1 WHERE id = ?";
 				read2 = "DELETE FROM registrolikes WHERE idcomentario = ? AND idconta = ?";
 				pst = con.prepareStatement(read);
 				pst2 = con.prepareStatement(read2);
@@ -159,7 +159,7 @@ public class DAOCurtida implements Serializable {
 				pst2.setInt(2, idConta);
 
 			} else if (resposta == true && like == true) {
-				read = "UPDATE tbcomentarios SET likes = likes - 1, deslikes = deslikes + 1 WHERE idcomentario = ?";
+				read = "UPDATE tbcomentarios SET likes = likes - 1, deslikes = deslikes + 1 WHERE id = ?";
 				read2 = "UPDATE registrolikes SET curtido = false WHERE idcomentario = ? and idconta = ?";
 				pst = con.prepareStatement(read);
 				pst2 = con.prepareStatement(read2);
@@ -169,8 +169,8 @@ public class DAOCurtida implements Serializable {
 				pst2.setInt(2, idConta);
 
 			} else if (resposta == false) {
-				read = "UPDATE tbcomentarios  SET deslikes = deslikes + 1 WHERE idcomentario = ?";
-				read2 = "INSERT  INTO registrolikes(idcomentario, idconta, curtido, idpost) VALUES (?,?,?,?)";
+				read = "UPDATE tbcomentarios SET deslikes = deslikes + 1 WHERE id = ?";
+				read2 = "INSERT INTO registrolikes(idcomentario, idconta, curtido, idpost) VALUES (?,?,?,?)";
 				pst = con.prepareStatement(read);
 				pst2 = con.prepareStatement(read2);
 
