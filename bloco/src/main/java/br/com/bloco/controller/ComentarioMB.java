@@ -69,7 +69,7 @@ public class ComentarioMB implements Serializable {
 
 	public void remover(int id) {
 		try {
-			service.remover(comentario);
+			service.remover(id);
 			carregarComentarios(id);
 		} catch (Exception e) {
 			System.out.println(e);

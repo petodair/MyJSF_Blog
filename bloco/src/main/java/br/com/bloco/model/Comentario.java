@@ -18,7 +18,7 @@ public class Comentario implements Serializable{
 		super();
 	}
 
-	public Comentario(int id, String autor, String comentario, int likes, int deslikes, int idConta, int idPost) {
+	public Comentario(int id, String autor, String comentario, int likes, int deslikes, int idPost, int idConta) {
 		super();
 		this.id = id;
 		this.autor = autor;

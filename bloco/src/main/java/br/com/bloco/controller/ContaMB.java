@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -36,13 +38,18 @@ public class ContaMB implements Serializable{
 	
 	public void adicionar() {
 		try {
+			if(service.checaCredenciais(conta.getUser(), conta.getEmail()) == 1) {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro","Já existe um usuario com este nome"));
+			} else if(service.checaCredenciais(conta.getUser(), conta.getEmail()) == 2) {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro","Já existe um usuario com este email"));
+			} else {
 			service.salvar(conta);
 			conta = new Conta();
 			carregar();
+			}			
 		} catch (Exception e) {
 			System.out.println(e);
-		}
-		
+		}		
 	}
 	
 	public void remover() {		
@@ -51,8 +58,7 @@ public class ContaMB implements Serializable{
 			carregar();
 		} catch (Exception e) {
 			
-		}
-		
+		}		
 	}
 	
 	public void pesquisar() {

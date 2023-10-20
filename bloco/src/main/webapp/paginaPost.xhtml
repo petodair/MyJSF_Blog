@@ -38,6 +38,9 @@
 					update="com" style="color: green;"/>
 					<p:commandButton value="deslikes #{c.deslikes}" action="#{comentarioMB.descurtir(c.id, bean.post.id)}" 
 					update="com" style="margin-left:20px; color: red;"/>
+					<p:outputLabel/>
+					<p:commandButton value="remover" rendered="#{c.idConta eq loginMB.conta.id ? 'true' : 'false'}"
+					action="#{comentarioMB.remover(c.id)}" update="com"/>
 
 				</div>
 

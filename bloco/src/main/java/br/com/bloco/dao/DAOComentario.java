@@ -83,7 +83,7 @@ public class DAOComentario {
 		}
 	}
 	
-	public void deletaComentario(Comentario comentario) {
+	public void deletaComentario(int id) {
 		String delete = "DELETE FROM tbcomentarios WHERE id = ?";
 		String delete2 = "DELETE FROM registrolikes WHERE idcomentario = ?";
 		try {
@@ -93,9 +93,9 @@ public class DAOComentario {
 			PreparedStatement pst = con.prepareStatement(delete);
 			PreparedStatement pst2 = con.prepareStatement(delete2);
 
-			pst.setInt(1, comentario.getId());
+			pst.setInt(1, id);
 			
-		    pst2.setInt(1, comentario.getId());
+		    pst2.setInt(1, id);
 
 			pst.executeUpdate();
 			

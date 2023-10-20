@@ -1,0 +1,28 @@
+<ui:composition template="../template/templateGenerico.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="title">Solicitações de Amizade</ui:define>
+	
+	<ui:define name="generico">
+	
+	<h2>Suas Solicitações de Amizade</h2>
+	
+	<h:form id="solicitacoes">
+	
+	  <p:dataList var="p" value="#{amizadeMB.listarSolicitacoes(loginMB.conta.id)}">
+	  <div>
+	     <p>#{amizadeMB.nomeRemetente(p.idRemetente)} te enviou uma solicitação de amizade</p>
+	     <p:commandButton value="Aceitar"/>
+	     <p:commandButton value="Recusar" action="#{amizadeMB.recusarSolicitacao(p.id)}" process="@this" update="solicitacoes"/>
+	  </div>
+	  </p:dataList>
+	
+	</h:form>
+	
+	</ui:define>
+	
+	</ui:composition>

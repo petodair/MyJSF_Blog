@@ -27,6 +27,10 @@ public class ContaService implements Serializable{
 		return dao.selecionaConta(id);
 	}
 	
+	public int checaCredenciais(String user, String email) {
+		return dao.checaConta(user, email);
+	}
+	
 	public List<Conta> todasAsContas(){
 		return dao.listarContas();
 	}

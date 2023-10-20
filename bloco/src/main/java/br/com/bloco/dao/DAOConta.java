@@ -189,5 +189,42 @@ public class DAOConta implements Serializable {
 		return false;
 		
 	}
+	
+public int checaConta(String user, String email) {
+		
+		String checaUser = "SELECT idconta, usuario, email, senha, tipo FROM tbcontas WHERE usuario = ?";
+		String checaEmail = "SELECT idconta, usuario, email, senha, tipo FROM tbcontas WHERE email = ?";
+		
+		try {
+			
+			Connection con = conectar();
+			PreparedStatement pst = con.prepareStatement(checaUser);
+			PreparedStatement pst2 = con.prepareStatement(checaEmail);
+			
+			pst.setString(1, user);
+			pst2.setString(1, email);
+				
+			ResultSet rs = pst.executeQuery();
+			ResultSet rs2 = pst2.executeQuery();
+			
+			if(rs.next()) {
+				con.close();
+				return 1;
+			} else if(rs2.next()) {
+				con.close();
+				return 2;
+			} else {
+				con.close();
+				return 1;
+			}
+			
+		} catch (Exception e) {		
+			System.out.println(e);
+			return 1;		
+
+		}
+		
+		
+	}
 
 }

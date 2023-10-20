@@ -19,8 +19,8 @@ public class ComentarioService implements Serializable{
 		dao.inserirComentario(c);
 	}
 	
-	public void remover(Comentario c) {
-		dao.deletaComentario(c);
+	public void remover(int id) {
+		dao.deletaComentario(id);
 	}
 	
 	public List<Comentario> comentariosDoPost(int id) {
